@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Définition de l'encodage des caractères -->
+    <meta charset="UTF-8">
+    <!-- Configuration pour un affichage optimal sur mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compatibilité avec les versions d'Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Ajout d'une icône pour l'onglet du navigateur -->
+    <link rel="icon" href="assets/icon.ico" type="image/x-icon">
+    <!-- Titre affiché dans l'onglet du navigateur -->
+    <title>Joyeux Noël Charles</title>
+    <!-- Importation de polices Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Mise en page centrée pour tout le contenu de la page */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Hauteur minimale pour couvrir l'écran */
+            margin: 0; /* Suppression des marges par défaut */
+            background-color: #333; /* Thème sombre */
+            color: #fff; /* Texte clair */
+            font-family: 'Open Sans', sans-serif; /* Applique la police Open Sans */
+        }
+
+        /* Style général pour le formulaire contenant les questions */
+        form {
+            width: 80%; /* Formulaire occupant 80% de la largeur de l'écran */
+            max-width: 600px; /* Largeur maximale sur écrans larges */
+            text-align: center; /* Centrage du texte et des éléments */
+        }
+
+        /* Style des étiquettes des questions */
+        .question label {
+            font-size: 1.5em; /* Texte de grande taille pour les questions */
+            font-weight: bold; /* Texte en gras pour les questions */
+            display: block; /* Chaque question s'affiche sur une nouvelle ligne */
+            margin-bottom: 20px; /* Espacement entre la question et les réponses */
+        }
+
+        /* Style des blocs de réponses */
+        .answer-text {
+            display: inline-block; /* Affichage en ligne avec des marges */
+            margin: 10px 0; /* Espacement vertical entre les réponses */
+            padding: 10px 15px; /* Espacement interne des réponses */
+            background-color: #171717; /* Couleur de fond sombre */
+            border-radius: 5px; /* Coins arrondis */
+            cursor: pointer; /* Curseur de la souris en forme de main */
+            transition: background-color 0.3s ease; /* Animation fluide pour le survol */
+        }
+
+        /* Effet visuel lors du survol des réponses */
+        .answer-text:hover {
+            background-color: #fff; /* Fond clair au survol */
+            color: #333; /* Texte sombre pour le contraste */
+        }
+
+        /* Style du bouton "Retour" */
+        #backButton {
+            margin-top: 20px; /* Espacement supérieur */
+            padding: 10px 20px; /* Espacement interne du bouton */
+            background-color: transparent; /* Fond transparent */
+            border: 2px solid #fff; /* Bordure blanche */
+            border-radius: 25px; /* Coins arrondis */
+            color: #fff; /* Texte blanc */
+            font-size: 1em; /* Taille du texte standard */
+            cursor: pointer; /* Curseur en forme de main */
+            transition: all 0.3s ease; /* Animation fluide pour le survol */
+        }
+
+        /* Effet visuel lors du survol du bouton */
+        #backButton:hover {
+            background-color: #fff; /* Fond blanc */
+            color: #333; /* Texte sombre */
+        }
+
+        /* Animation pour faire apparaître les questions avec un effet */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0; /* Invisible au départ */
+                transform: translateY(20px); /* Déplacement vers le bas */
+            }
+            100% {
+                opacity: 1; /* Complètement visible */
+                transform: translateY(0); /* Position normale */
+            }
+        }
+
+        /* Classe pour appliquer l'animation aux éléments */
+        .fade-up {
+            animation: fadeInUp 0.5s ease-out; /* Animation d'apparition fluide */
+        }
+    </style>
+</head>
+<body>
+    <!-- Formulaire contenant les questions -->
+    <form id="questionForm">
+        <div class="question" id="question1">
+            <label for="q1">Quel genre de territoire te semble le plus intrigant ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 1)">Un monde où les néons remplacent les étoiles, et où chaque recoin peut cacher une promesse ou un piège.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 1)">Des terres oubliées, où des créatures et des mystères ancestraux attendent ceux assez audacieux pour les découvrir.</span>
+        </div>
+        <div class="question" id="question2">
+            <label for="q2">Quel type de voyage te fascine le plus ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 2)">Une quête sans fin à travers une cité hyper-connectée, où le futur semble constamment réinventé.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 2)">Un périple solitaire, entre ruines et forêts sombres, où chaque rencontre te rapproche de ton destin incertain.</span>
+        </div>
+        <div class="question" id="question3">
+            <label for="q3">Quel genre de pouvoir aimerais-tu maîtriser ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 3)">La capacité de manipuler la technologie à ta guise, transformant le monde autour de toi selon tes désirs.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 3)">Un pouvoir primordial, forgé par des âges de guerre, où chaque geste de force a un impact monumental sur l'univers.</span>
+        </div>
+        <div class="question" id="question4">
+            <label for="q4">Comment réagirais-tu face à une menace imminente ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 4)">En utilisant tes ressources et ta rapidité, prêt à déjouer l’adversité avec des réflexes précis et des gadgets ingénieux.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 4)">En faisant face au danger avec calme et concentration, sachant qu’une seule erreur pourrait être fatale.</span>
+        </div>
+        <div class="question" id="question5">
+            <label for="q5">Quel type de protagoniste te correspondrait le mieux ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 5)">Un solitaire, maîtrisant la technologie et l’information, mais toujours en quête d’une vérité qui échappe.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 5)">Un guerrier mystérieux, qui cherche à restaurer un équilibre ancien dans un monde dévasté.</span>
+        </div>
+        <div class="question" id="question6">
+            <label for="q6">Quel environnement t’attire le plus pour t'y perdre ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 6)">Un univers saturé de lumière artificielle et de mouvements rapides, où tout peut être acheté ou échangé.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 6)">Une vaste étendue où chaque ruine dissimule des secrets oubliés, et où la survie semble être un combat quotidien.</span>
+        </div>
+        <div class="question" id="question7">
+            <label for="q7">Quel type d’aventure préfères-tu vivre ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 7)">Une série de péripéties intenses où l’issue dépend de ton intelligence et de ta capacité à anticiper les dangers.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 7)">Un voyage épique, fait de combats sans fin et de mystères qui se dévoilent à chaque épreuve.</span>
+        </div>
+        <div class="question" id="question8">
+            <label for="q8">Quel aspect d’un conflit te semble le plus captivant ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 8)">L’aspect mental, où les choix stratégiques, l’infiltration et la manipulation jouent un rôle central.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 8)">L’affrontement direct, où la pure force et la maîtrise des armes font la différence entre la vie et la mort.</span>
+        </div>
+        <div class="question" id="question9">
+            <label for="q9">Comment définirais-tu ton idéal de liberté ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 9)">La possibilité de remodeler le monde à ta manière, où chaque augmentation ou amélioration te rend plus puissant.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 9)">La liberté de choisir son propre chemin, même au prix de sacrifices personnels et de luttes intenses.</span>
+        </div>
+        <div class="question" id="question10">
+            <label for="q10">Quel rôle préfères-tu dans une histoire ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 10)">Un protagoniste complexe, évoluant dans un monde où le contrôle et l’illusion règnent.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 10)">Un héros solitaire, luttant contre des forces qui dépassent sa compréhension et son pouvoir.</span>
+        </div>
+        <div class="question" id="question11">
+            <label for="q11">Quel type de créature te semble le plus fascinant ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 11)">Une entité cybernétique, fusionnée avec la technologie, dont la nature est aussi floue que dangereuse.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 11)">Une créature mythologique, née de l’ombre du passé, portant en elle la sagesse d’un âge révolu.</span>
+        </div>
+        <div class="question" id="question12">
+            <label for="q12">Quel défi te semble le plus stimulant ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 12)">Une quête de pouvoir où l’issue dépend de ton habileté à naviguer entre les alliés et les ennemis.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 12)">Un combat épique contre une force supérieure, où la victoire est incertaine et chaque erreur coûte cher.</span>
+        </div>
+        <div class="question" id="question13">
+            <label for="q13">Quel est ton idéal de récompense dans un jeu ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 13)">La possibilité de remodeler ton apparence et tes compétences à ta guise, offrant une personnalisation sans fin.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 13)">La satisfaction de découvrir un artefact ancien, caché dans un lieu oublié, mais chargé d’un immense pouvoir.</span>
+        </div>
+        <div class="question" id="question14">
+            <label for="q14">Quel type de mystère te pousse à avancer ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 14)">Un secret lié à la société elle-même, dont les fils invisibles se tissent à travers le pouvoir et la technologie.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 14)">Un mystère ancien, inscrit dans les pierres et les ruines, dont la révélation pourrait bouleverser l’équilibre du monde.</span>
+        </div>
+        <div class="question" id="question15">
+            <label for="q15">Quel aspect d’une histoire t’interpelle le plus ?</label><br>
+            <span class="answer-text" onclick="selectAnswer('cyberpunk', 15)">L’intrigue, où chaque personnage semble jouer un rôle dans un grand jeu de manipulation et de choix difficiles.</span><br>
+            <span class="answer-text" onclick="selectAnswer('eldenring', 15)">L’aventure, où l’inconnu est omniprésent et où chaque moment passé à explorer te rapproche un peu plus de la vérité.</span>
+        </div>
+        <button type="button" id="backButton" onclick="previousQuestion()">← Retour</button>
+    </form>
+
+    <script>
+        let currentQuestion = 1; // Numéro de la question affichée
+        let answers = {}; // Stocke les réponses de l'utilisateur
+
+        // Calcul du nombre total de questions dans le formulaire
+        const totalQuestions = document.querySelectorAll('.question').length;
+
+        // Affiche une question spécifique par son numéro
+        function showQuestion(questionNumber) {
+            const questions = document.querySelectorAll('.question');
+            questions.forEach((question) => {
+                question.style.display = 'none'; // Cache toutes les questions
+            });
+
+            const currentQuestionElement = document.getElementById('question' + questionNumber);
+            if (currentQuestionElement) {
+                currentQuestionElement.style.display = 'block'; // Affiche la question actuelle
+                currentQuestionElement.classList.add('fade-up'); // Ajoute une animation
+            }
+
+            // Affiche ou cache le bouton "Retour" en fonction de la position
+            document.getElementById("backButton").style.display = (questionNumber > 1) ? "inline-block" : "none";
+        }
+
+        // Passe à la question suivante
+        function nextQuestion(questionNumber) {
+            if (questionNumber < totalQuestions) {
+                currentQuestion = questionNumber + 1;
+                showQuestion(currentQuestion);
+            } else {
+                calculerResultat(); // Calcule automatiquement le résultat à la fin
+            }
+        }
+
+        // Reviens à la question précédente
+        function previousQuestion() {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        // Enregistre la réponse sélectionnée et passe à la question suivante
+        function selectAnswer(answer, questionNumber) {
+            answers[questionNumber] = answer;
+            nextQuestion(questionNumber);
+        }
+
+        // Calcule et redirige vers les résultats basés sur les réponses
+        function calculerResultat() {
+            let cyberpunkCount = 0; // Compte des réponses "cyberpunk"
+            let eldenringCount = 0; // Compte des réponses "eldenring"
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                if (answers[i] === 'cyberpunk') {
+                    cyberpunkCount++;
+                } else if (answers[i] === 'eldenring') {
+                    eldenringCount++;
+                }
+            }
+
+            // Calcule les pourcentages
+            let pourcentageCyberpunk = (cyberpunkCount / totalQuestions) * 100;
+            let pourcentageEldenring = (eldenringCount / totalQuestions) * 100;
+
+            // Redirige vers la page des résultats avec les pourcentages dans l'URL
+            window.location.href = `resultat.html?cp=${pourcentageCyberpunk}&er=${pourcentageEldenring}`;
+        }
+
+        // Initialise la première question à l'ouverture de la page
+        showQuestion(currentQuestion);
+    </script>
+</body>
+</html>

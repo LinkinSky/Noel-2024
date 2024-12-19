@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Définition de l'encodage des caractères -->
+    <meta charset="UTF-8">
+    <!-- Configuration pour un affichage optimal sur mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compatibilité avec les versions d'Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Ajout d'une icône pour l'onglet du navigateur -->
+    <link rel="icon" href="assets/icon.ico" type="image/x-icon">
+    <!-- Titre affiché dans l'onglet du navigateur -->
+    <title>Joyeux Noël Charles</title>
+    <!-- Importation de polices Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Merienda:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Structure principale : utilise Flexbox pour organiser les éléments verticalement */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Répartit les éléments verticalement */
+            align-items: center;
+            height: 100vh; /* Utilise toute la hauteur de l'écran */
+            margin: 0; /* Supprime les marges par défaut */
+            padding: 0; /* Supprime les espacements internes */
+        }
+
+        /* Conteneur principal englobant tous les éléments */
+        .resultat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%; /* Occupe toute la largeur de l'écran */
+            height: 100%; /* Occupe toute la hauteur de l'écran */
+        }
+
+        /* Style de la vidéo : elle occupe toute la largeur et conserve un ratio 16:9 */
+        .video-resultat {
+            width: 100%; /* Prend toute la largeur disponible */
+            aspect-ratio: 16 / 9; /* Ratio standard des vidéos */
+            flex-shrink: 0; /* Empêche la vidéo de rétrécir si l'espace est limité */
+        }
+
+        /* Style pour le message affiché */
+        #message {
+            font-size: 1.2em; /* Taille de police légèrement agrandie */
+            font-weight: 600; /* Texte en gras */
+            text-align: center; /* Centre le texte */
+            margin: 20px 0; /* Marge minimale de 20px en haut et en bas */
+            width: 80%; /* Limite la largeur à 80% de l'écran */
+            flex-grow: 1; /* Permet au message de s'adapter à l'espace disponible */
+            display: flex;
+            align-items: center; /* Centre verticalement le texte */
+            justify-content: center; /* Centre horizontalement le texte */
+        }
+
+        /* Image du titre du jeu superposée à la vidéo */
+        #imageGameTitle {
+            position: absolute; /* Positionnement absolu par rapport au parent */
+            top: 10%; /* Place l'image à 10% du haut de la vidéo */
+            left: 50%; /* Centre l'image horizontalement */
+            transform: translateX(-50%); /* Ajuste pour être parfaitement centré */
+            width: 80%; /* L'image occupe 80% de la largeur de l'écran */
+            height: auto; /* Conserve les proportions */
+            z-index: 1; /* S'assure que l'image est au-dessus de la vidéo */
+        }
+
+        /* Image de couverture positionnée en bas de la page */
+        #imageGameCover {
+            width: 100%; /* L'image occupe toute la largeur de l'écran */
+            height: auto; /* Conserve les proportions */
+            flex-shrink: 0; /* Empêche l'image de rétrécir si l'espace est limité */
+        }
+    </style>
+</head>
+<body>
+    <div class="resultat">
+        <!-- Image du titre du jeu superposée à la vidéo -->
+        <img id="imageGameTitle" src="" alt="Game Title">
+
+        <!-- Vidéo principale affichée -->
+        <video id="videoResultat" class="video-resultat" loop autoplay muted>
+            <source id="videoSource" src="" type="video/mp4">
+            Votre navigateur ne supporte pas les vidéos.
+        </video>
+
+        <!-- Message personnalisé -->
+        <p id="message"></p>
+
+        <!-- Image de couverture affichée en bas -->
+        <img id="imageGameCover" src="" alt="Game cover">
+    </div>
+    
+    <script>
+        // Fonction pour extraire les paramètres de l'URL
+        function getURLParams() {
+            let params = {};
+            window.location.search.substring(1).split("&").forEach(function(param) {
+                let [key, value] = param.split("=");
+                params[key] = decodeURIComponent(value);
+            });
+            return params; // Retourne un objet contenant les paramètres
+        }
+    
+        // Récupération des pourcentages depuis l'URL
+        let params = getURLParams();
+        let pourcentageCyberpunk = parseFloat(params.cp) || 0;  // Pourcentage pour Cyberpunk
+        let pourcentageEldenring = parseFloat(params.er) || 0;  // Pourcentage pour Elden Ring
+    
+        // Variables pour configurer le contenu en fonction des résultats
+        let message = "";
+        const videoResultatElem = document.getElementById("videoResultat");
+        const videoSourceElem = document.getElementById("videoSource");
+        const imageGameTitleElem = document.getElementById("imageGameTitle");
+        const imageGameCoverElem = document.getElementById("imageGameCover");
+        const bodyElem = document.body;  // Référence au <body>
+        const messageElem = document.getElementById("message");
+
+        // Condition : si Cyberpunk est majoritaire
+        if (pourcentageCyberpunk > 50) {
+            videoSourceElem.src = "assets/cyberpunk_2077_video.mp4"; // Vidéo Cyberpunk
+            imageGameTitleElem.src = "assets/cyberpunk_2077_title.png"; // Titre du jeu
+            message = "Tu recevras le jeu Cyberpunk 2077 et son DLC Phantom Liberty"; // Message personnalisé
+            imageGameCoverElem.src = "assets/cyberpunk_2077_cover.jpg"; // Couverture Cyberpunk
+            bodyElem.style.backgroundColor = "#FDFD03";  // Fond jaune
+            bodyElem.style.color = "#000";  // Texte noir
+            bodyElem.style.fontFamily = "'Orbitron', sans-serif";  // Police Orbitron
+        }
+        // Condition : si Elden Ring est majoritaire
+        else if (pourcentageEldenring > 50) {
+            videoSourceElem.src = "assets/elden_ring_video.mp4"; // Vidéo Elden Ring
+            imageGameTitleElem.src = "assets/elden_ring_title.png"; // Titre du jeu
+            message = "Tu recevras le jeu Elden Ring et son DLC Shadow of the Erdtree"; // Message personnalisé
+            imageGameCoverElem.src = "assets/elden_ring_cover.jpg"; // Couverture Elden Ring
+            bodyElem.style.backgroundColor = "#000";  // Fond noir
+            bodyElem.style.color = "#C19D53";  // Texte doré
+            bodyElem.style.fontFamily = "'Merienda', cursive";  // Police Merienda
+        }
+
+        // Charger et jouer la vidéo configurée
+        videoResultatElem.load();
+        videoResultatElem.play();
+
+        // Mettre à jour le message affiché
+        messageElem.textContent = message;
+    </script>
+</body>
+</html>

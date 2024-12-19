@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Favicon de l'onglet (icône affichée dans l'onglet du navigateur) -->
+    <link rel="icon" href="assets/icon.ico" type="image/x-icon">
+    <!-- Titre affiché dans l'onglet du navigateur -->
+    <title>Joyeux Noël Charles</title>
+    <!-- Lien vers une police personnalisée via Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap" rel="stylesheet">
+    <style>
+        /* Applique un thème sombre à l'ensemble de la page */
+        body {
+            background-color: #333; /* Thème sombre */
+            color: #fff; /* Texte clair */
+            font-family: 'Open Sans', sans-serif; /* Applique la police Open Sans */
+        }
+
+        /* Style pour le titre principal de la page */
+        h1 {
+            font-family: 'Mystery Quest'; /* Police fantaisie pour un style festif */
+            font-weight: normal; /* Suppression de la graisse par défaut */
+            font-size: clamp(20px, 10vw, 60px); /* Taille flexible en fonction de la largeur de l'écran */
+            text-align: center; /* Centrer le texte horizontalement */
+            text-overflow: ellipsis; /* Ajout de points de suspension si le texte déborde */
+            margin-top: 40px; /* Marge supérieure pour espacer du haut de la page */
+            margin-bottom: 0px; /* Pas d'espace sous le titre */
+            overflow: hidden; /* Cache les débordements de texte */
+         }
+
+        /* Ajout de marges autour du texte */
+        .text-container {
+            margin-left: 40px; /* Espacement gauche */
+            margin-right: 40px; /* Espacement droit */
+        }
+
+        /* Style général pour les paragraphes */
+        p {
+            font-size: 18px; /* Taille de police légèrement grande pour une meilleure lisibilité */
+            font-style: italic; /* Texte en italique pour un ton chaleureux */
+            margin: 15px 0; /* Espacement vertical entre les paragraphes */
+            line-height: 1.8; /* Espacement entre les lignes pour aérer le texte */
+            text-align: justify; /* Justifie le texte pour un alignement net des deux côtés */
+        }
+
+        /* Conteneur centré pour le bouton */
+        .button-container {
+            display: flex; /* Utilisation de Flexbox pour aligner les éléments */
+            justify-content: center; /* Centre le bouton horizontalement */
+            margin-bottom: 20px; /* Espace sous le bouton */
+        }
+
+        /* Style du bouton principal (bouton moderne et interactif) */
+        #startButton {
+            display: inline-block; /* Affiche le bouton en tant que bloc aligné */
+            padding: 12px 30px; /* Espacement interne pour rendre le bouton plus grand */
+            background-color: transparent; /* Fond transparent pour le style de base */
+            border: 2px solid #fff; /* Bordure blanche pour contraster sur un fond sombre */
+            border-radius: 25px; /* Coins arrondis pour un look moderne */
+            color: #fff; /* Texte en blanc */
+            font-size: 18px; /* Taille de texte lisible */
+            font-weight: 600; /* Texte en semi-gras */
+            text-align: center; /* Centrer le texte dans le bouton */
+            cursor: pointer; /* Changement du curseur en pointeur lors du survol */
+            transition: all 0.3s ease; /* Ajout d'une transition pour l'effet de survol */
+        }
+
+        /* Effets visuels lorsque l'utilisateur survole le bouton */
+        #startButton:hover {
+            background-color: #fff; /* Change le fond en blanc */
+            color: #333; /* Change la couleur du texte en gris foncé */
+            border-color: #fff; /* Maintient la bordure blanche */
+        }
+        
+        /* Supprime le soulignement par défaut pour les liens */
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Titre principal de la page -->
+    <h1>Joyeux Noël !</h1>
+
+    <!-- Conteneur pour le texte du message -->
+    <div class="text-container">
+        <p>Cher Charles,</p>
+        <p>Joyeux Noël !</p>
+        <p>Cette année, j'ai voulu t'offrir quelque chose d’un peu spécial, un cadeau mystérieux qui, j'espère, saura éveiller ta curiosité et te transporter dans un univers qui t’attend. Plutôt que de tout te révéler ici, je t’invite à découvrir ce cadeau d’une manière un peu différente.</p>
+        <p>Pour cela, tu trouveras ci-joint un petit questionnaire. Réponds-y à ton rythme et laisse-toi guider. Peut-être que les réponses t'ouvriront la porte à un univers où mystère et aventure se mêlent…</p>
+        <p>Prêt pour l'aventure ?</p>
+        <p>Avec tout mon amour et mes meilleurs vœux pour cette nouvelle année,<br>Edouard</p>
+    </div>
+
+    <!-- Bouton pour commencer l'aventure (redirige vers le questionnaire) -->
+    <a href="questionnaire.html" class="button-container">
+        <button id="startButton">Partir à l'aventure</button>
+    </a>
+</body>
+</html>
